@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        int[] arr = {3, 2, 4, 1};
+        int[] arr = {3, 2, 1, 4};
         int i = 0;
         double average = findAvg(arr, i, arr.length);
         System.out.println("Average number is " + average);

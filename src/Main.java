@@ -1,18 +1,25 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        int[] arr = {10, 1, 32, 3, 45};
-        int min = findMin(arr, arr.length);
-        System.out.println("Min number is " + min);
+        Scanner scanner = new Scanner(System.in);
+        int num = scanner.nextInt();
+        isPrime(num);
     }
 
-    public static int findMin(int[] arr, int n){
-        if(n == 1){
-            return arr[0];
+    public static void isPrime(int n){
+        int count = 0;
+        for(int i = 1; i <= n / 2; i++){
+            if(n % i == 0){
+                count++;
+            }
+        }
+        if(count == 1){
+            System.out.println("is prime");
         }
         else{
-            int min = findMin(arr, n - 1);
-            return Math.min(min, arr[n-1]);
+            System.out.println("is not prime");
         }
     }
 }

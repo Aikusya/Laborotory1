@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        int[] arr = {3, 2, 4, 1};
+        int[] arr = {10, 1, 32, 3, 45};
         int min = findMin(arr, arr.length);
         System.out.println("Min number is " + min);
     }

@@ -2,20 +2,21 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //0 1 1 2 3 5 8 13 ...
+
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
-        int result = fibonacci(num);
+        int power = scanner.nextInt();
+        int result = power(num, power);
         System.out.println(result);
     }
 
-    public static int fibonacci(int n){
+    public static int power(int a, int n){
         if(n == 0){
-            return 0;
-        }
-        if(n == 1){
             return 1;
         }
-        return fibonacci(n - 1) + fibonacci(n - 2);
+        if(n == 1){
+            return a;
+        }
+        return a * power(a, n - 1);
     }
 }

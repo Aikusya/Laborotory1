@@ -2,16 +2,25 @@ import java.util.Scanner;
 
 public class Main {
     public static void main (String[] args) {
-        int[] arr = {3, 2, 4, 1};
-        double average = (findAvg(arr, arr.length - 1)) / arr.length;
-        System.out.println("Average number is " + average);
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < n; i++){
+            arr[i] = scanner.nextInt();
+        }
+        double average = findAvgOfArr(arr, n);
+        System.out.println("Average is " + average);
     }
-    public static double findAvg(int[] arr, int n){
+
+    public static double findAvgOfArr(int[] arr, int n){
         if(n == 0){
-            return arr[0];
+            return 0;
         }
         else {
-            return arr[n] + findAvg(arr, n - 1);
+            double sum = findAvgOfArr(arr, n - 1)*(n - 1);
+            sum += arr[n - 1];
+            return sum/n;
         }
+
     }
 }

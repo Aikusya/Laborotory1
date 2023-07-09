@@ -2,32 +2,23 @@ import java.util.Scanner;
 
 public class Main {
     public static void main (String[] args) {
-// Input any string
         Scanner scanner = new Scanner(System.in);
-        String string = scanner.next();
-        int n = string.length() - 1;
-// Check the string
-        check(string, n);
+// Input two numbers
+        int n = scanner.nextInt();
+        int k = scanner.nextInt();
+// Calculate their binomial coefficient
+        int result = binomCoeff(n, k);
+        System.out.println(result);
     }
 
-// check method is used to check if the input string consists of digits or not
-    static void check(String string, int n) {
-        if(n == 0){
-            if(Character.isDigit(string.charAt(n))){
-                System.out.println("YES");
-                return;
-            }
-            else{
-                System.out.println("NO");
-                return;
-            }
+// binomCoeff method calculates their binomial coefficient
+    static int binomCoeff(int n, int k) {
+        if(k == 0){
+            return 1;
         }
-        if(Character.isDigit(string.charAt(n))){
-            check(string, n - 1);
+        if(k == n){
+            return 1;
         }
-        else{
-            System.out.println("NO");
-            return;
-        }
+        return binomCoeff(n - 1, k - 1) + binomCoeff(n - 1, k);
     }
 }

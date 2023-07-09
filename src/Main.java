@@ -2,24 +2,28 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //0 1 1 2 3 5 8 13 ...
+
         Scanner scanner = new Scanner(System.in);
-// Input the number
+// Input the number user wants to power
+        System.out.println("Enter the number u want to power: ");
         int num = scanner.nextInt();
-// Finding the Fibonacci
-        int result = fibonacci(num);
+// Input the number user wants to power the previous number
+        System.out.println("Enter the number u want to powered bby: ");
+        int power = scanner.nextInt();
+// Calculate the result
+        int result = power(num, power);
         System.out.println(result);
     }
 
-// fibonacci methods calculates the number in fibonacci row
-    public static int fibonacci(int num){
-        if(num == 0){
-            return 0;
-        }
-        if(num == 1){
+// power method calculates the power of numbers
+    public static int power(int a, int n){
+        if(n == 0){
             return 1;
         }
-        return fibonacci(num - 1) + fibonacci(num - 2);
+        if(n == 1){
+            return a;
+        }
+        return a * power(a, n - 1);
     }
 }
 

@@ -1,39 +1,34 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main (String[] args) {
-// User inputs the size of array
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter array size:");
-        int size = scanner.nextInt();
-// Method sets the members of array
-        int[] arr = setArray(size);
-// Method finds the average number of array
-        double average = findAvgOfArr(arr, size);
-        System.out.println("Average is " + average);
-    }
+    public static void main(String[] args) {
 
-// findAVGOfArr method finds the average number of array
-    private static double findAvgOfArr(int[] arr, int size) {
-        if(size == 0){
-            return 0;
-        }
-        else {
-            double sum = findAvgOfArr(arr, size - 1)*(size - 1);
-            sum += arr[size - 1];
-            return sum/size;
+// User inputs the number
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+// Checking if the number is prime or not
+        if (number == 1 || number == 0) {
+            System.out.println(number + " is not a prime neither prime number.");
+        } else {
+            if (isPrime(number, number / 2)) {
+                System.out.println(number + " is a prime number.");
+            }
+            else {
+                System.out.println(number + " is not a prime number.");
+            }
         }
     }
 
-// setArray method sets the members of array
-    public static int[] setArray(int size) {
-        int[] arr = new int[size];
-        Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < size; i++) {
-            System.out.println("Enter array's member");
-            int member = scanner.nextInt();
-            arr[i] = member;
+// isPrime method checks if the number is prime or not using recursion
+    private static boolean isPrime(int number, int divisor) {
+        if (divisor == 1) {
+            return true;
         }
-        return arr;
+        if (number % divisor == 0) {
+            return false;
+        }
+        return isPrime(number, divisor - 1);
     }
 }
+

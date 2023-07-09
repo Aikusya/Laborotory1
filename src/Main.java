@@ -1,26 +1,36 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main (String[] args) {
+    public static void main(String[] args) {
+// User inputs a size of an array
         Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int[] arr = new int[n];
-        for(int i = 0; i < n; i++){
-            arr[i] = scanner.nextInt();
-        }
-        double average = findAvgOfArr(arr, n);
-        System.out.println("Average is " + average);
+        System.out.println("Enter array size:");
+        int size = scanner.nextInt();
+        int[] arr = setArray(size);
+        int min = findMin(arr, size);
+        System.out.println("Min number is " + min);
     }
 
-    public static double findAvgOfArr(int[] arr, int n){
-        if(n == 0){
-            return 0;
+    // setArray method is used to initialize the members of an array
+    public static int[] setArray(int size){
+        int[] arr = new int[size];
+        Scanner scanner = new Scanner(System.in);
+        for(int i = 0; i < size; i ++){
+            System.out.println("Enter array's member");
+            int member = scanner.nextInt();
+            arr[i] = member;
         }
-        else {
-            double sum = findAvgOfArr(arr, n - 1)*(n - 1);
-            sum += arr[n - 1];
-            return sum/n;
-        }
+        return arr;
+    }
 
+    // findMin method is used to find the min member of array
+    public static int findMin(int[] arr, int size){
+        if(size == 1){
+            return arr[0];
+        }
+        else{
+            int min = findMin(arr, size - 1);
+            return Math.min(min, arr[size-1]);
+        }
     }
 }

@@ -2,21 +2,24 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-// User inputs the number
+        //0 1 1 2 3 5 8 13 ...
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the number: ");
+// Input the number
         int num = scanner.nextInt();
-        int result = factorial(num);
+// Finding the Fibonacci
+        int result = fibonacci(num);
         System.out.println(result);
     }
 
-// factorial methods calculates the factorial of the input number
-    public static int factorial(int n){
-        if(n == 1){
+// fibonacci methods calculates the number in fibonacci row
+    public static int fibonacci(int num){
+        if(num == 0){
+            return 0;
+        }
+        if(num == 1){
             return 1;
         }
-        return n * factorial(n - 1);
+        return fibonacci(num - 1) + fibonacci(num - 2);
     }
 }
 

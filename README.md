@@ -1,2 +1,2 @@
-# Laborotory1
+# Laborotory2
 Minimum number of the array

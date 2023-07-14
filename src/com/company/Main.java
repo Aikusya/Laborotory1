@@ -23,5 +23,4 @@ public class Main {
             return number % 10 + calculateSum(number/10);
         }
     }
-
 }

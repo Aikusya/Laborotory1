@@ -1,54 +1,46 @@
 # Assigment 1
-# exercise 8
-Check if the string consist only of digits
+# exercise 9
+Calculate the binomial coefficient
 ------------------------------------------------------
 package com.company;
 import java.util.Scanner;
 
 public class Main {
-    public static void main (String[] args) {
-// Input any string
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String string = scanner.next();
-        int n = string.length() - 1;
-// Check the string
-        check(string, n);
+        // User inputs two numbers
+        System.out.println("Enter two numbers:");
+        int n = scanner.nextInt();
+        int k = scanner.nextInt();
+        int result = binomialCoefficient(n, k);
+        System.out.println("The binomial coefficient of " + n + " and " + k + " is " + result);
     }
 
-    // check method is used to check if the input string consists of digits or not
-    static void check(String string, int n) {
-        if(n == 0){
-            if(Character.isDigit(string.charAt(n))){
-                System.out.println("YES");
-                return;
-            }
-            else{
-                System.out.println("NO");
-                return;
-            }
+    
+     //binomialCoefficient calculates the binomial coefficient of two numbers using recursion.
+    static int binomialCoefficient(int n, int k) {
+        if (k < 0 || k > n) {
+            return 0;
         }
-        if(Character.isDigit(string.charAt(n))){
-            check(string, n - 1);
+        if (k == 0 || k == n) {
+            return 1;
         }
-        else{
-            System.out.println("NO");
-            return;
-        }
+        return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
     }
 }
 -----------------------------------------------------
 The code is divided into the following components:
 
-main method: It serves as the entry point of the program. The user is prompted to enter any string, and then the program calls the check method to check if the string consists only of digits.
+main method: It serves as the entry point of the program. The user is prompted to enter two numbers, and then the program calls the binomialCoefficient method to calculate the binomial coefficient of the two numbers. The result is printed to the console.
 
-check method: This method recursively checks if the characters in the string are digits or not. It takes the input string and the index of the character to check as input. If the index reaches 0, the method checks if the character at that position is a digit using Character.isDigit(). If it is, the method prints "YES" and returns. If it's not a digit, the method prints "NO" and returns. If the index is not 0, the method checks if the character at that position is a digit. If it is, the method calls itself recursively with the updated index (decremented by 1). If it's not a digit, the method prints "NO" and returns.
+binomialCoefficient method: This method recursively calculates the binomial coefficient of two numbers. It takes the first number n and the second number k as input. The method first checks if the value of k is outside the valid range (less than 0 or greater than n). If so, it returns 0 since the binomial coefficient is not valid. Next, it checks if k is 0 or equal to n, which are the base cases where the binomial coefficient is 1. If neither of the base cases is met, the method recursively calls itself with the parameters n - 1 and k - 1, and n - 1 and k, and adds the results together.
 
 
-1. INPUT: 4541545
-   OUTPUT: YES
+1. INPUT: 10, 5
+   OUTPUT: 252
 
-3. INPUT: 54515f5151
-   OUTPUT: NO
+3. INPUT: 5, 4
+   OUTPUT: 5
    
-4. INPUT: 5532
-   OUTPUT: YES
+4. INPUT: 9, 3
+   OUTPUT: 84

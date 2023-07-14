@@ -4,23 +4,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        // User inputs two numbers
         System.out.println("Enter two numbers:");
-        int n = scanner.nextInt();
-        int k = scanner.nextInt();
-        int result = binomialCoefficient(n, k);
-        System.out.println("The binomial coefficient of " + n + " and " + k + " is " + result);
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int result = gcd(a, b);
+        System.out.println("The GCD of " + a + " and " + b + " is " + result);
     }
 
 
-    //binomialCoefficient calculates the binomial coefficient of two numbers using recursion.
-    static int binomialCoefficient(int n, int k) {
-        if (k < 0 || k > n) {
-            return 0;
+    //Calculates the Greatest Common Divisor (GCD) of two numbers using the Euclidean algorithm.
+    public static int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
         }
-        if (k == 0 || k == n) {
-            return 1;
-        }
-        return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
+        return gcd(b, a % b);
     }
 }

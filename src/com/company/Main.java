@@ -7,7 +7,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter array size:");
         int size = scanner.nextInt();
-    //Does set the size
+    //Does set the size of array
         int[] arr = setArray(size);
     //Does find the min member of array
         int min = findMin(arr, size);

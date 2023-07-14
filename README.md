@@ -1,41 +1,45 @@
 # Assigment 1
-# exercise 
-Factorial
+# exercise 5
+Fibonacci
 ------------------------------------------------------
 package com.company;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-// User inputs the number
+        //0 1 1 2 3 5 8 13 ...
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the number: ");
+// Input the number
         int num = scanner.nextInt();
-        int result = factorial(num);
+// Finding the Fibonacci
+        int result = fibonacci(num);
         System.out.println(result);
     }
 
-    // factorial methods calculates the factorial of the input number
-    public static int factorial(int n){
-        if(n == 1){
+    // fibonacci methods calculates the number in fibonacci row
+    public static int fibonacci(int num){
+        if(num == 0){
+            return 0;
+        }
+        if(num == 1){
             return 1;
         }
-        return n * factorial(n - 1);
+        return fibonacci(num - 1) + fibonacci(num - 2);
     }
 }
 -----------------------------------------------------
 The code is divided into the following components:
 
-main method: It serves as the entry point of the program. The user is prompted to enter a number, and then the program calls the factorial method to calculate the factorial of the input number. The result is printed to the console.
+main method: It serves as the entry point of the program. The user is prompted to enter a number, and then the program calls the fibonacci method to calculate the number at the given position in the Fibonacci sequence. The result is printed to the console.
 
-factorial method: This method recursively calculates the factorial of the input number. It takes the number n as input and checks if n is equal to 1. If it is, the method returns 1 as the base case. Otherwise, it calls itself recursively with the parameter n - 1 and multiplies the result by n. The multiplication continues until the base case is reached, resulting in the factorial of the input number.
+fibonacci method: This method recursively calculates the number at the given position in the Fibonacci sequence. It takes the position num as input and checks if num is 0 or 1. If it is, the method returns the respective base cases (0 for position 0 and 1 for position 1). Otherwise, it calls itself recursively with the parameters num - 1 and num - 2 to calculate the numbers at the previous two positions in the Fibonacci sequence and adds them together to get the number at the current position.
 
 
 1. INPUT: 5
-   OUTPUT: 120
+   OUTPUT: 5
 
-2. INPUT: 4
-   OUTPUT: 24
-3. INPUT: 10
-   OUTPUT: 3628800
+2. INPUT: 8
+   OUTPUT: 21
+   
+4. INPUT: 6
+   OUTPUT: 8

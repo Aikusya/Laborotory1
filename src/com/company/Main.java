@@ -4,23 +4,34 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        // Usr inputs the number to calculate
-        System.out.println("Enter the number: ");
-        int number = scanner.nextInt();
-        // Calculating the sum of digits of entered number
-        System.out.println(calculateSum(number));
+        //User inputs any string
+        System.out.println("Enter any string: ");
+        String string = scanner.next();
+        //We note the length of string for further calculations
+        int length = string.length() - 1;
+        //If the palindrome method returns true
+        if(palindrome(string, 0, length )){
+            System.out.println("String is palindrome");
+        }
+        //If the palindrome method returns false
+        else {
+            System.out.println("String is not palindrome");
+        }
+
     }
 
 
-    // calculateSum method is used to calculate the sum of digits if number
-    public static int calculateSum(int number){
-        // If number is in range 0 <= number <= 9 then it returns itself
-        if(number / 10 == 0){
-            return number;
+    // palindrome method is used to check if the given string is palindrome or not
+    public static boolean palindrome(String string, int start, int end){
+        if(string.charAt(start) == string.charAt(end - start)) {
+            if(start == end){
+                return true;
+            }
+            palindrome(string, start + 1, end);
         }
-        // If the number > 9 then it calculates the sum of digits
         else {
-            return number % 10 + calculateSum(number/10);
+            return false;
         }
+        return true;
     }
 }

@@ -3,38 +3,24 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-    // User inputs the size of array
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter array size:");
-        int size = scanner.nextInt();
-    // Method sets the members of array
-        int[] arr = setArray(size);
-    // Method finds the average number of array
-        double average = findAvgOfArr(arr, size);
-        System.out.println("Average is " + average);
+        // User inputs two numbers
+        System.out.println("Enter two numbers:");
+        int n = scanner.nextInt();
+        int k = scanner.nextInt();
+        int result = binomialCoefficient(n, k);
+        System.out.println("The binomial coefficient of " + n + " and " + k + " is " + result);
     }
 
-    // findAvgOfArr method finds the average number of array by recursion
-    private static double findAvgOfArr(int[] arr, int size) {
-        if (size == 0) {
+
+    //binomialCoefficient calculates the binomial coefficient of two numbers using recursion.
+    static int binomialCoefficient(int n, int k) {
+        if (k < 0 || k > n) {
             return 0;
-        } else {
-            double sum = findAvgOfArr(arr, size - 1) * (size - 1);
-            sum += arr[size - 1];
-            return sum / size;
         }
-    }
-
-    // setArray method sets the members of array
-    public static int[] setArray(int size) {
-        int[] arr = new int[size];
-        Scanner scanner = new Scanner(System.in);
-        // Loop is used to set the members of array
-        for (int i = 0; i < size; i++) {
-            System.out.println("Enter array's member");
-            int member = scanner.nextInt();
-            arr[i] = member;
+        if (k == 0 || k == n) {
+            return 1;
         }
-        return arr;
+        return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
     }
 }

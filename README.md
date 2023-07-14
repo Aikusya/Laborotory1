@@ -1,64 +1,64 @@
 # Assigment 1
-# exercise 1
-Minimum number of the array
+# exercise 2
+Average number of the array
 ------------------------------------------------------
 package com.company;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-    // User inputs a size of an array
+    // User inputs the size of array
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter array size:");
         int size = scanner.nextInt();
-    //Does set the size of array
+    // Method sets the members of array
         int[] arr = setArray(size);
-    //Does find the min member of array
-        int min = findMin(arr, size);
-        System.out.println("Min number is " + min);
+    // Method finds the average number of array
+        double average = findAvgOfArr(arr, size);
+        System.out.println("Average is " + average);
     }
 
-    // setArray method is used to initialize the members of an array
-    public static int[] setArray(int size){
+    // findAvgOfArr method finds the average number of array by recursion
+    private static double findAvgOfArr(int[] arr, int size) {
+        if (size == 0) {
+            return 0;
+        } else {
+            double sum = findAvgOfArr(arr, size - 1) * (size - 1);
+            sum += arr[size - 1];
+            return sum / size;
+        }
+    }
+
+    // setArray method sets the members of array
+    public static int[] setArray(int size) {
         int[] arr = new int[size];
         Scanner scanner = new Scanner(System.in);
-    // Loop is used to initialize members of array
-        for(int i = 0; i < size; i ++){
+        // Loop is used to set the members of array
+        for (int i = 0; i < size; i++) {
             System.out.println("Enter array's member");
             int member = scanner.nextInt();
             arr[i] = member;
         }
         return arr;
     }
-
-    // findMin method is used to find the min member of array by recursion
-    public static int findMin(int[] arr, int size){
-        if(size == 1){
-            return arr[0];
-        }
-        else{
-            int min = findMin(arr, size - 1);
-            return Math.min(min, arr[size-1]);
-        }
-    }
 }
 -----------------------------------------------------
 The code is divided into the following components:
 
-main method: It serves as the entry point of the program. It prompts the user to enter the array size, calls the setArray method to initialize the array, and then calls the findMin method to determine the minimum number in the array. The minimum number is printed to the console.
+main method: It serves as the entry point of the program. It prompts the user to enter the array size, calls the setArray method to initialize the array, and then calls the findAvgOfArr method to calculate the average of the array. The average is printed to the console.
 
-setArray method: This method initializes the members of the array. It takes the size of the array as input, creates an array of that size, and prompts the user to enter values for each member of the array using a loop. It returns the initialized array.
+findAvgOfArr method: This method recursively calculates the average number of the array. It takes the array and the number of elements to consider as input. If the size is 0, indicating an empty array, it returns 0. Otherwise, it recursively calls itself with a reduced size and multiplies the previously calculated average by (size - 1), adds the value of the current element, and divides the sum by the current size to get the updated average.
 
-findMin method: This method recursively finds the minimum member in the array. It takes the array and the number of elements to consider as input. If there is only one element, it returns that element. Otherwise, it recursively calls itself with a reduced size and compares the minimum found so far with the last element of the array using Math.min. The minimum value is returned.
+setArray method: This method sets the members of the array. It takes the size of the array as input, creates an array of that size, and prompts the user to enter values for each member of the array using a loop. It returns the initialized array.
 
 
-1. INPUT: size - 4
-          members - 5, 7, 8, 15
-   OUTPUT: Min numbers is 5
+1. INPUT: size - 5
+          members - 4, 5, 6, 7, 8
+   OUTPUT: Average is 6.0
 
-2. INPUT: size - 6
-          members - 8, 6, 7, 5, 9, 10
-   OUTPUT: Min number is 5
-3. INPUT: size - 10
-          members - 74, 54, 96, 25, 22, 8, 35, 44, 12, 66
-   OUTPUT: Min number is 8
+2. INPUT: size - 4
+          members - 8, 12, 95, 62
+   OUTPUT: Average is 44.25
+3. INPUT: size - 8
+          members - 12, 41, 58, 41, 21, 12, 22, 36
+   OUTPUT: Min number is 30.375

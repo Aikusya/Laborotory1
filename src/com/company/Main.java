@@ -4,19 +4,24 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter two numbers:");
-        int a = scanner.nextInt();
-        int b = scanner.nextInt();
-        int result = gcd(a, b);
-        System.out.println("The GCD of " + a + " and " + b + " is " + result);
+        // Usr inputs the number to calculate
+        System.out.println("Enter the number: ");
+        int number = scanner.nextInt();
+        // Calculating the sum of digits of entered number
+        System.out.println(calculateSum(number));
     }
 
 
-    //Calculates the Greatest Common Divisor (GCD) of two numbers using the Euclidean algorithm.
-    public static int gcd(int a, int b) {
-        if (b == 0) {
-            return a;
+    // calculateSum method is used to calculate the sum of digits if number
+    public static int calculateSum(int number){
+        // If number is in range 0 <= number <= 9 then it returns itself
+        if(number / 10 == 0){
+            return number;
         }
-        return gcd(b, a % b);
+        // If the number > 9 then it calculates the sum of digits
+        else {
+            return number % 10 + calculateSum(number/10);
+        }
     }
+
 }
